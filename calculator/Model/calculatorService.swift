@@ -17,72 +17,135 @@ import Foundation
 import Foundation
 
 class CalculatorService {
-    
-
-    var currentNumber = "0"
+    let displayView: ViewController
     var currentOperation = Operation.nonAction
-    var fisrtNumber = 0.0
-    var secondNumber = 0.0
-    var displayView: ViewController
-
+    var currentNumber    = "0"
+    var firstNumber      = 0.0
+    var secondNumber     = 0.0
+    var isDouble         = false
+    var result           = ""
+    
     init(displayView: ViewController) {
         self.displayView = displayView
     }
-
-    var result = ""
-
+    
     func makeCalculation(operation: Operation) {
         if currentOperation != .nonAction {
+            
             if currentNumber != "" {
-                secondNumber = Double(currentNumber) ?? 0.0
+                secondNumber = Double(currentNumber)!
+                
                 switch operation {
+                case .nonAction:
+                    print("No action")
                 case .addition:
-                    result = String(fisrtNumber + secondNumber)
+                    result = String(firstNumber + secondNumber)
                 case .substraction:
-                    result = String(fisrtNumber - secondNumber)
-                case .multiplication:
-                    result = String(fisrtNumber * secondNumber)
+                    result = String(firstNumber - secondNumber)
                 case .division:
-                    result = String(fisrtNumber / secondNumber)
-                default:
-                    result = ""
+                    result = String(firstNumber / secondNumber)
+                case .multiplication:
+                    result = String(firstNumber * secondNumber)
                 }
+                
+                firstNumber = Double(result)!
+                
+                if Double(result)!.truncatingRemainder(dividingBy: 1) == 0 {
+                    result = String(Int(Double(result)!))
+                }
+                currentNumber = result
+                displayView.updateDisplay(text: currentNumber)
+                currentOperation = .nonAction
             }
+
         } else {
-            fisrtNumber = Double(currentNumber) ?? 0.0
+            firstNumber = Double(currentNumber) ?? 0.0
             currentNumber = ""
-//            updateDisplay(text: currentNumber)
+            displayView.updateDisplay(text: "")
             currentOperation = operation
         }
     }
-
-    func addition() {
-        makeCalculation(operation: .addition)
+    
+    func changeSign() {
+        var temp = currentNumber
+        if temp.contains("-") {
+            let sign = ["-"]
+            temp = String(temp.filter { !sign.contains(String($0)) })
+            print(temp)
+            displayView.updateDisplay(text: temp)
+            currentNumber = temp
+        } else {
+            temp = "-" + currentNumber
+            print(temp)
+            displayView.updateDisplay(text: temp)
+            currentNumber = temp
+        }
     }
-
-    func substraction() {
-        makeCalculation(operation: .substraction)
+    
+    func acAction() {
+        firstNumber = 0.0
+        secondNumber = 0.0
+        currentOperation = .nonAction
+        currentNumber = ""
+        result = ""
+        displayView.updateDisplay(text: currentNumber)
+//        status()
+        displayView.updateDisplay(text: "0")
     }
-
-    func multiplication() {
-        makeCalculation(operation: .multiplication)
+    
+    func percent() {
+        currentNumber = String(Double(currentNumber)! / 100)
+        displayView.updateDisplay(text: currentNumber)
+        result = currentNumber
+        firstNumber = Double(result)!
     }
-
+    
     func division() {
         makeCalculation(operation: .division)
     }
-
+    
+    func multiplication() {
+        makeCalculation(operation: .multiplication)
+    }
+    
+    func substraction() {
+        if (currentNumber == "0") || (currentNumber == "") {
+            currentNumber = "-"
+            displayView.updateDisplay(text: currentNumber)
+        } else {
+            makeCalculation(operation: .substraction)
+        }
+    }
+    
+    func addition() {
+        makeCalculation(operation: .addition)
+    }
+    
     func makeResult() {
         makeCalculation(operation: currentOperation)
     }
-
-    func acAction() {
-        currentNumber = "0"
-        currentOperation = Operation.nonAction
-        fisrtNumber = 0.0
-        secondNumber = 0.0
-        result = ""
+    
+    func dot() {
+        if currentNumber.contains(".") {
+            return
+        } else {
+            currentNumber += "."
+            displayView.updateDisplay(text: currentNumber)
+        }
+    }
+    
+    func numberAction(number: Int) {
+        if currentNumber != "0" {
+            currentNumber.append(String(number))
+            displayView.updateDisplay(text: currentNumber)
+        } else {
+            currentNumber = String(number)
+            displayView.updateDisplay(text: currentNumber)
+        }
+    }
+    
+    func removeCharacter() {
+        currentNumber.removeLast()
+        displayView.updateDisplay(text: currentNumber)
     }
 }
-
-

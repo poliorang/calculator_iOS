@@ -12,8 +12,8 @@
 		4A58253129C12353008E3727 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58253029C12353008E3727 /* ViewController.swift */; };
 		4A58253629C12358008E3727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A58253529C12358008E3727 /* Assets.xcassets */; };
 		4A58253929C12358008E3727 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A58253729C12358008E3727 /* LaunchScreen.storyboard */; };
-		4A58254529C12526008E3727 /* calculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58254429C12526008E3727 /* calculatorService.swift */; };
-		4A58254729C125A3008E3727 /* operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58254629C125A3008E3727 /* operations.swift */; };
+		4A58254529C12526008E3727 /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58254429C12526008E3727 /* CalculatorService.swift */; };
+		4A58254729C125A3008E3727 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58254629C125A3008E3727 /* Operations.swift */; };
 		4A58254A29C126FB008E3727 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58254929C126FB008E3727 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		4A58253529C12358008E3727 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A58253829C12358008E3727 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A58253A29C12358008E3727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A58254429C12526008E3727 /* calculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatorService.swift; sourceTree = "<group>"; };
-		4A58254629C125A3008E3727 /* operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = operations.swift; sourceTree = "<group>"; };
+		4A58254429C12526008E3727 /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
+		4A58254629C125A3008E3727 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		4A58254929C126FB008E3727 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,8 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				4A58254329C124CF008E3727 /* App */,
-				4A58254229C12471008E3727 /* Controller */,
-				4A58254129C1246A008E3727 /* View */,
+				4A58254229C12471008E3727 /* ViewController */,
 				4A58254029C12455008E3727 /* Model */,
 				4A58253529C12358008E3727 /* Assets.xcassets */,
 				4A58253729C12358008E3727 /* LaunchScreen.storyboard */,
@@ -74,26 +73,19 @@
 		4A58254029C12455008E3727 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4A58254429C12526008E3727 /* calculatorService.swift */,
-				4A58254629C125A3008E3727 /* operations.swift */,
+				4A58254429C12526008E3727 /* CalculatorService.swift */,
+				4A58254629C125A3008E3727 /* Operations.swift */,
 				4A58254929C126FB008E3727 /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4A58254129C1246A008E3727 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4A58254229C12471008E3727 /* Controller */ = {
+		4A58254229C12471008E3727 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				4A58253029C12353008E3727 /* ViewController.swift */,
 			);
-			path = Controller;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		4A58254329C124CF008E3727 /* App */ = {
@@ -176,10 +168,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A58253129C12353008E3727 /* ViewController.swift in Sources */,
-				4A58254529C12526008E3727 /* calculatorService.swift in Sources */,
+				4A58254529C12526008E3727 /* CalculatorService.swift in Sources */,
 				4A58252D29C12353008E3727 /* AppDelegate.swift in Sources */,
 				4A58252F29C12353008E3727 /* SceneDelegate.swift in Sources */,
-				4A58254729C125A3008E3727 /* operations.swift in Sources */,
+				4A58254729C125A3008E3727 /* Operations.swift in Sources */,
 				4A58254A29C126FB008E3727 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
